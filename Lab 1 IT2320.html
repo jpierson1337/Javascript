@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lab 1</title>
+  <style>*{font-family:Roboto,Helvetica,Arial,sans-serif;}body{padding:10px;}</style>
+</head>
+
+<body>
+  <h1>IT-2320 - Lab 1: Language Constructs</h1>
+  <h2>Student Name: John Pierson</h2>
+  <p>
+    Output: 
+    <div id="output"></div>
+  </p>
+  <p>
+    Values:<br>
+    <div id="values"></div>
+  </p>  
+  <p>
+    Sum: 
+    <div id="sum"></div>
+  </p>
+  <script>
+    /*
+    Author: John Pierson
+    Class: IT-2320
+    */
+
+    let name = "John Pierson";
+
+    document.writeln("Lab 1. Completed by " + name + "<br>");
+
+ 
+    console.log("Note: Lab 1. Completed by " + name);
+
+    document.getElementById("output").innerHTML = "innerHTML value set";
+
+    let valuesContent = "";
+    for (let i = 1; i <= 10; i++) {
+      valuesContent += i + "<br>";
+    }
+    document.getElementById("values").innerHTML = valuesContent;
+
+    let sum = 0;
+    let counter = 1;
+    while (counter <= 10) {
+      sum += counter;
+      counter++;
+    }
+    document.getElementById("sum").innerHTML = sum;
+
+    let a = 5, b = 8, c = 12;
+    let total = a + b + c;
+    document.writeln("Sum of a, b, and c: " + total + "<br>");
+
+    if (a < b) {
+      document.writeln("a < b<br>");
+    } else {
+      document.writeln("a > b<br>");
+    }
+  </script>
+</body>
+</html>
