@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width">
+  <title>Lab 2</title>
+  <style>*{font-family:Roboto,Helvetica,Arial,sans-serif;}body{padding:10px;}</style>
+  <script>
+
+
+    // add two numbers
+    function add(a, b) {
+      return a + b;
+    }
+
+    // subtract two numbers
+    function subtract(a, b) {
+      return a - b;
+    }
+
+    //  sum any number of arguments
+    function sum() {
+      let total = 0;
+      for (let i = 0; i < arguments.length; i++) {
+        total += arguments[i];
+      }
+      return total;
+    }
+
+    // setting the title
+    function setTitle() {
+      document.getElementById("title").innerHTML = "Hello, this is Lab 2!";
+    }
+
+    // display name
+    function studentName(name) {
+      document.getElementById("student").innerHTML = name;
+    }
+
+    // Variable since page load
+    let secondsSinceLoad = 0;
+
+    //  update secondsSinceLoad and display it
+    const updateSeconds = () => {
+      secondsSinceLoad++;
+      document.getElementById("seconds").innerHTML = secondsSinceLoad;
+    };
+
+   
+    document.addEventListener("DOMContentLoaded", function() {
+      // Call setTitle
+      setTitle();
+
+     
+      studentName("John Pierson");
+
+   
+      setInterval(updateSeconds, 1000);
+    });
+  </script>
+</head>
+
+<body>
+  <h1 id="title">Title</h1>
+  <h2 id="student">Student Name</h2>
+  Seconds since page loaded: <div id="seconds"></div>
+
+  <script>
+    helloWorld();
+
+  
+    document.writeln("<br>Add(10, 15): " + add(10, 15));
+    document.writeln("<br>Subtract(45, 10): " + subtract(45, 10));
+    document.writeln("<br>Sum(5, 10, 20, 30): " + sum(5, 10, 20, 30));
+  </script>
+</body>
+
+</html>
