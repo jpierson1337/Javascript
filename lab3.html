@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lab 3</title>
+  <style>
+    *{font-family:Roboto,Helvetica,Arial,sans-serif;} 
+    body{padding:10px;} 
+    p{padding-bottom:20px;} 
+    b{display:block;}
+  </style>
+</head>
+<body>
+  <h1>IT-2320 - Lab 3: Strings, Numbers, Dates, Arrays</h1>
+  <h2>Student Name: John Pierson</h2>
+
+  <p>
+    <b>1. String Length</b><br>
+    <script>
+      var jsawesome = 'JavaScript is awesome!';
+      document.writeln('length = ' + jsawesome.length);
+    </script>
+  </p>
+
+  <p>
+    <b>2. Extract Area Code</b><br>
+    <script>
+      var phone = "888-123-1234";
+      document.writeln("Area Code: " + phone.substring(0, 3));
+    </script>
+  </p>
+
+  <p>
+    <b>3. Extract Phone Number Without Area Code</b><br>
+    <script>
+      document.writeln("Phone Number Without Area Code: " + phone.substr(4));
+    </script>
+  </p>
+
+  <p>
+    <b>4. Replace Flavor</b><br>
+    <script>
+      var sentence = "I love flavor ice cream!";
+      document.writeln(sentence.replace("flavor", "chocolate"));
+    </script>
+  </p>
+
+  <p>
+    <b>5. Address in Uppercase</b><br>
+    <script>
+      var addr = "123 Main St";
+      var city = "Cleveland";
+      var state = "OH";
+      var zip = "44115";
+      document.writeln(addr.toUpperCase() + "<br>" + city.toUpperCase() + ", " + state.toUpperCase() + " " + zip);
+    </script>
+  </p>
+
+  <p>
+    <b>6. Convert to Lowercase</b><br>
+    <script>
+      var helpdesk = "HelpDesk@Tri-C.edu";
+      document.writeln(helpdesk.toLowerCase());
+    </script>
+  </p>
+
+  <p>
+    <b>7. Pad a Number</b><br>
+    <script>
+      var id = "007";
+      document.writeln(id.padStart(9, "0"));
+    </script>
+  </p>
+
+  <p>
+    <b>8. Template Literals</b><br>
+    <script>
+      var firstName = "John";
+      var lastName = "Pierson";
+      document.writeln(`Hello ${firstName} ${lastName}!`);
+    </script>
+  </p>
+
+  <p>
+    <b>9. Multiline String</b><br>
+    <script>
+      var joke = `Why don't programmers like nature? 
+      It has too many bugs.`;
+      document.writeln(joke);
+    </script>
+  </p>
+
+  <p>
+    <b>10. isNaN Example</b><br>
+    <script>
+      document.writeln(isNaN("Hello"));
+    </script>
+  </p>
+
+  <p>
+    <b>11. Format as Currency</b><br>
+    <script>
+      var currency = (20 + 10 / 3).toFixed(2);
+      document.writeln("$" + currency);
+    </script>
+  </p>
+
+  <p>
+    <b>12. Parse Integer</b><br>
+    <script>
+      document.writeln(parseInt(10.335));
+    </script>
+  </p>
+
+  <p>
+    <b>13. Check if Integer</b><br>
+    <script>
+      document.writeln(Number.isInteger(20.5));
+    </script>
+  </p>
+
+  <p>
+    <b>14. Current Date</b><br>
+    <script>
+      var d = new Date();
+      document.writeln(d);
+    </script>
+  </p>
+
+  <p>
+    <b>15. Subtract 1 Year</b><br>
+    <script>
+      d.setFullYear(d.getFullYear() - 1);
+      document.writeln(d);
+    </script>
+  </p>
+
+  <p>
+    <b>16. Output Year</b><br>
+    <script>
+      document.writeln(d.getFullYear());
+    </script>
+  </p>
+
+  <p>
+    <b>17. Output UTC Date</b><br>
+    <script>
+      document.writeln(d.toUTCString());
+    </script>
+  </p>
+
+  <p>
+    <b>18. Output Array Elements</b><br>
+    <script>
+      var supplies = ["Books", "Notebooks", "Pens", "Pencils", "Eraser", "Bookbag"];
+      supplies.forEach(item => document.writeln(item + "<br>"));
+    </script>
+  </p>
+
+  <p>
+    <b>19. Sort and Output Array</b><br>
+    <script>
+      var numbers = [];
+      numbers.push(4, 8, 2, 9, 10, 12, 3, 5);
+      numbers.sort((a, b) => a - b);
+      for (let i = 0; i < numbers.length; i++) {
+        document.writeln(numbers[i] + "<br>");
+      }
+    </script>
+  </p>
+
+  <p>
+    <b>20. Sum and Average</b><br>
+    <script>
+      let sum = 0;
+      for (let i = 0; i < numbers.length; i++) {
+        sum += numbers[i];
+      }
+      let average = sum / numbers.length;
+      document.writeln("Sum: " + sum + "<br>Average: " + average);
+    </script>
+  </p>
+
+</body>
+</html>
