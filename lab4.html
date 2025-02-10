@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Code</title>
+</head>
+<body>
+    <div>
+        <h2>Student Information:</h2>
+        <p id="student-info"></p>
+    </div>
+
+    <div>
+        <h2>Course Information:</h2>
+        <p id="course-info"></p>
+    </div>
+
+    <div>
+        <h2>Planet Information:</h2>
+        <p id="planet-info"></p>
+    </div>
+
+    <div>
+        <h2>Favorite Languages:</h2>
+        <ul id="favorite-languages"></ul>
+    </div>
+
+    <div>
+        <h2>Credit Hours for Courses:</h2>
+        <ul id="credit-hours"></ul>
+    </div>
+
+    <script>
+        // Student class
+        class Student {
+            constructor(name, major, gpa, classesTaken) {
+                this.name = name;
+                this.major = major;
+                this.gpa = gpa;
+                this.classesTaken = classesTaken;
+            }
+            displayProperties() {
+                return `<strong>Name:</strong> ${this.name}<br>
+                        <strong>Major:</strong> ${this.major}<br>
+                        <strong>GPA:</strong> ${this.gpa}<br>
+                        <strong>Classes Taken:</strong> ${this.classesTaken.join(', ')}<br>`;
+            }
+        }
+
+        // Create a Student object
+        let student = new Student("John Pierson", "Programming and Development", 3.0, ["IT-1025", "IT-1050"]);
+
+        // Display student properties
+        document.getElementById("student-info").innerHTML = student.displayProperties();
+
+        // Course object
+        let course = {
+            courseId: "IT-2320",
+            title: "17-2320",
+            crsDesc: "Interactive Internet Programming",
+            credits: "4",
+            displayCourse() {
+                let info = "";
+                for (let property in this) {
+                    if (typeof this[property] !== 'function') {
+                        info += `<strong>${property}:</strong> ${this[property]}<br>`;
+                    }
+                }
+                return info;
+            }
+        };
+
+        // Display course properties
+        document.getElementById("course-info").innerHTML = course.displayCourse();
+
+        // Planet object
+        let planet = {
+            name: "Mercury",
+            diameterMiles: 3031.9,
+            millMilesFromEarth: 48
+        };
+
+        // Output planet properties
+        document.getElementById("planet-info").innerHTML = `<strong>Planet Name:</strong> ${planet.name}<br>
+                                                            <strong>Planet Diameter (miles):</strong> ${planet.diameterMiles}<br>
+                                                            <strong>Distance from Earth (million miles):</strong> ${planet.millMilesFromEarth}<br>`;
+
+        // Set of favorite languages
+        let favoriteLanguages = new Set(["JavaScript", "Python", "C#", "Java"]);
+
+        // Output favorite languages
+        let favoriteLanguagesList = "";
+        favoriteLanguages.forEach(language => {
+            favoriteLanguagesList += `<li>${language}</li>`;
+        });
+        document.getElementById("favorite-languages").innerHTML = favoriteLanguagesList;
+
+        // Map of credit hours for courses
+        let creditHrs = new Map([
+            ["IT-1025", 3],
+            ["IT-1050", 3],
+            ["17-2910", 3],
+            ["IT-2820", 4],
+            ["17-2030", 4],
+            ["IT-2351", 4],
+            ["IT-2650", 4]
+        ]);
+
+        // Get credit hours for a specific course
+        let creditHrsForIT2030 = creditHrs.get("17-2030");
+
+        // Output all credit hours using loop
+        let creditHoursList = "";
+        for (let [course, creditHr] of creditHrs) {
+            creditHoursList += `<li>${course}: ${creditHr}</li>`;
+        }
+        document.getElementById("credit-hours").innerHTML = creditHoursList;
+    </script>
+</body>
+</html>
