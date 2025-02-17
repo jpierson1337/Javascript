@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab 5</title>
+<style>
+  * { font-family: Roboto, Helvetica, Arial, sans-serif; }
+  body { padding: 10px; padding-bottom: 200px; }
+  .step { padding-top: 30px; }
+  div { padding-bottom: 10px; }
+  .instructions { display: block; padding-bottom: 20px; }
+  input { width: 60px; font-size: 1em; border-radius: 5px; border-color: #e5e5e5; }
+  #op1, #op2 { width: 40px; font-size: 1.2em; }
+  #formError { color: red; }
+</style>
+</head>
+<body>
+  <h1>IT-2320 - Lab 5: Document Object Model</h1>
+  <h2>Student Name: </h2>
+  <span class="instructions"><b>Instructions:</b> Add JavaScript code to solve each problem below. Note that the script and HTML that you're going to interact with should be together right after the problem. Follow the instructions and use the DOM for each problem.</span>
+
+  <div class="step"><b>Step 1</b> - Describe what the HTML Document Object Model is and at least 3 ways that you can use it.</div>
+  <div>
+    The HTML Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the structure of a document as a tree of objects, where each object corresponds to a part of the document (e.g., elements, attributes, text). Three ways you can use the DOM are:
+    <ol>
+      <li>Access and modify HTML elements and their content using methods like `getElementById` and `innerHTML`.</li>
+      <li>Change the style and attributes of elements dynamically using properties like `style` and `setAttribute`.</li>
+      <li>Add or remove elements and respond to user events like clicks or mouse movements.</li>
+    </ol>
+  </div>
+
+  <div class="step"><b>Step 2</b> - Populate the content of element with id="studentName" with your first and last name using the document object and innerHTML property.</div>
+  Name: <div id="studentName"></div>
+  <script>
+    // Step 2 Solution:
+    document.getElementById("studentName").innerHTML = "John Pierson";
+  </script>
+
+  <div class="step"><b>Step 3</b> - Set the innerHTML of the element with id="currDate" to the current date.</div>
+  <div id="currDate"></div>
+  <script>
+    // Step 3 Solution:
+    document.getElementById("currDate").innerHTML = new Date().toLocaleDateString();
+  </script>
+
+  <div class="step"><b>Step 4</b> - Change the font color for id="hello" to green using the style.color property.</div>
+  <div id="hello">hello, world!</div>
+  <script>
+    // Step 4 Solution:
+    document.getElementById("hello").style.color = "green";
+  </script>
+
+  <div class="step"><b>Step 5</b> - When a user clicks the button displaying the value "Click Me", change the value to "Clicked!" Use the clickMe() function. Attach it to the onclick event for the button.</div>
+  <button id="btnClick" onclick="clickMe()">Click Me</button>
+  <script>
+    // Step 5 Solution:
+    function clickMe() {
+      document.getElementById("btnClick").innerHTML = "Clicked!";
+    }
+  </script>
+
+  <div class="step"><b>Step 6</b> - When a user scrolls their mouse over the element with id="mouseEvent", display mouseover! in the element. When the mouse is no longer over the element, it should go back to "No mouseover".</div>
+  <div id="mouseEvent">No mouseover</div>
+  <script>
+    // Step 6 Solution:
+    const mouseEventElement = document.getElementById("mouseEvent");
+    mouseEventElement.addEventListener("mouseover", () => {
+      mouseEventElement.innerHTML = "mouseover!";
+    });
+    mouseEventElement.addEventListener("mouseout", () => {
+      mouseEventElement.innerHTML = "No mouseover";
+    });
+  </script>
+
+  <div class="step"><b>Step 7</b> - Validate the form. Make sure both operands 1) have values, 2) are numeric, 3) are integers, and 4) are between 1 and 10 (include 1 or 10 as valid). You should check for each. If either of them are not valid, display an appropriate error message indicating which of the 4 criteria it does not meet (hint: you'll need an if statement) in the element with id='formError' and return false, so the form does not submit. If they are all valid, submit the form. Test with values '' and '', 'a' and 'b', 5.5 and 1.1, 11 and 12, 1 and 10.</div>
+  <span id="formError"></span>
+  <form id="formAdd" method="get" action="sum.php" onsubmit="return checkForm()">
+    <input type="text" name="op1" id="op1" value=""> + 
+    <input type="text" name="op2" id="op2" value=""> &nbsp;&nbsp;
+    <input type="submit" value="Add">
+  </form>
+  <script>
+    // Step 7 Solution:
+    function checkForm() {
+      const op1 = document.getElementById("op1").value;
+      const op2 = document.getElementById("op2").value;
+      const errorElement = document.getElementById("formError");
+
+      // Reset error message
+      errorElement.innerHTML = "";
+
+      // Check if operands have values
+      if (!op1 || !op2) {
+        errorElement.innerHTML = "Both operands must have values.";
+        return false;
+      }
+
+      // Check if operands are numeric
+      if (isNaN(op1) || isNaN(op2)) {
+        errorElement.innerHTML = "Both operands must be numeric.";
+        return false;
+      }
+
+      // Check if operands are integers
+      if (!Number.isInteger(parseFloat(op1)) || !Number.isInteger(parseFloat(op2))) {
+        errorElement.innerHTML = "Both operands must be integers.";
+        return false;
+      }
+
+      // Check if operands are between 1 and 10
+      if (op1 < 1 || op1 > 10 || op2 < 1 || op2 > 10) {
+        errorElement.innerHTML = "Both operands must be between 1 and 10.";
+        return false;
+      }
+
+      // If all checks pass, submit the form
+      return true;
+    }
+  </script>
+
+  <div class="step"><b>Step 8</b> - Use getElementsByTagName to get all div elements. Use a for loop to loop through each element in the collection you retrieved. Add a style property to change the font color to green for each of the elements. Hint: this should change the instruction line for each problem to green.</div>
+  <script>
+    // Step 8 Solution:
+    const divElements = document.getElementsByTagName("div");
+    for (let i = 0; i < divElements.length; i++) {
+      divElements[i].style.color = "green";
+    }
+  </script>
+
+  <div class="step"><b>Step 9</b> - Retrieve the body element and append a div element to the end of the body element with innerHTML set to 'The end...'</div>
+  <script>
+    // Step 9 Solution:
+    const bodyElement = document.body;
+    const newDiv = document.createElement("div");
+    newDiv.innerHTML = "The end...";
+    bodyElement.appendChild(newDiv);
+  </script>
+</body>
+</html>
